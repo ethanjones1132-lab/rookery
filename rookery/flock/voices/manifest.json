@@ -1,0 +1,585 @@
+{
+  "schema": "rookery.serum-voices/1",
+  "serum_version": "1.368",
+  "sample_rate": 44100,
+  "render_date": "2026-11-08T23:26:57.822227+00:00",
+  "provenance": "Rendered by the Rookery authors with Xfer Serum from original patches; no Serum presets or wavetable files are included.",
+  "birds": {
+    "bramble": {
+      "bird": "bramble",
+      "role": "bass",
+      "notes": [
+        {
+          "midi": 28,
+          "file": "bramble/28.flac",
+          "peak_dbfs": -3.0,
+          "frames": 59345
+        },
+        {
+          "midi": 31,
+          "file": "bramble/31.flac",
+          "peak_dbfs": -3.0,
+          "frames": 59387
+        },
+        {
+          "midi": 34,
+          "file": "bramble/34.flac",
+          "peak_dbfs": -3.0,
+          "frames": 59189
+        },
+        {
+          "midi": 37,
+          "file": "bramble/37.flac",
+          "peak_dbfs": -3.0,
+          "frames": 59175
+        },
+        {
+          "midi": 40,
+          "file": "bramble/40.flac",
+          "peak_dbfs": -3.0,
+          "frames": 58680
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "2ab75efe98001d270c195dcbbe780ab65eb248d09a69479b1b9bc908bfa3e413",
+      "gui_todo": [
+        "Osc A Basic Shapes sine frame (table choice unavailable)",
+        "Mono + Legato + Always portamento",
+        "Velocity to filter cutoff (modulation routing unavailable)"
+      ],
+      "deterministic_repeat": true
+    },
+    "cinder": {
+      "bird": "cinder",
+      "role": "bass",
+      "notes": [
+        {
+          "midi": 28,
+          "file": "cinder/28.flac",
+          "peak_dbfs": -3.0,
+          "frames": 26421
+        },
+        {
+          "midi": 31,
+          "file": "cinder/31.flac",
+          "peak_dbfs": -3.0,
+          "frames": 25836
+        },
+        {
+          "midi": 34,
+          "file": "cinder/34.flac",
+          "peak_dbfs": -3.0,
+          "frames": 26146
+        },
+        {
+          "midi": 37,
+          "file": "cinder/37.flac",
+          "peak_dbfs": -3.0,
+          "frames": 25892
+        },
+        {
+          "midi": 40,
+          "file": "cinder/40.flac",
+          "peak_dbfs": -3.0,
+          "frames": 25884
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "38b8aad2c3b9df3fba6dc89d72febf6927623f98aaa3e30b86fafde70c4a9b49",
+      "gui_todo": [
+        "Osc A Basic Shapes sine frame (table choice unavailable)",
+        "Mono + Legato + Always portamento",
+        "ENV 3 to pitch through matrix route; pitch-drop omitted"
+      ],
+      "deterministic_repeat": true
+    },
+    "quill": {
+      "bird": "quill",
+      "role": "keys",
+      "notes": [
+        {
+          "midi": 52,
+          "file": "quill/52.flac",
+          "peak_dbfs": -3.0,
+          "frames": 55568
+        },
+        {
+          "midi": 55,
+          "file": "quill/55.flac",
+          "peak_dbfs": -3.0,
+          "frames": 55554
+        },
+        {
+          "midi": 58,
+          "file": "quill/58.flac",
+          "peak_dbfs": -3.0,
+          "frames": 55569
+        },
+        {
+          "midi": 61,
+          "file": "quill/61.flac",
+          "peak_dbfs": -3.0,
+          "frames": 55571
+        },
+        {
+          "midi": 64,
+          "file": "quill/64.flac",
+          "peak_dbfs": -3.0,
+          "frames": 55571
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "afec1ee4f0fc42d0165beca4cc1a3e65236a8ddb158d02ded11a4c9a4a871a45",
+      "gui_todo": [
+        "Osc A/B Basic Shapes sine tables",
+        "ENV2 to FM matrix route",
+        "Velocity to FM amount",
+        "LFO flutter/tremolo routes and LFO shape/mode; engine provides deterministic modulation"
+      ],
+      "deterministic_repeat": true
+    },
+    "sable": {
+      "bird": "sable",
+      "role": "keys",
+      "notes": [
+        {
+          "midi": 52,
+          "file": "sable/52.flac",
+          "peak_dbfs": -3.0,
+          "frames": 38377
+        },
+        {
+          "midi": 55,
+          "file": "sable/55.flac",
+          "peak_dbfs": -3.0,
+          "frames": 38380
+        },
+        {
+          "midi": 58,
+          "file": "sable/58.flac",
+          "peak_dbfs": -3.0,
+          "frames": 38383
+        },
+        {
+          "midi": 61,
+          "file": "sable/61.flac",
+          "peak_dbfs": -3.0,
+          "frames": 38383
+        },
+        {
+          "midi": 64,
+          "file": "sable/64.flac",
+          "peak_dbfs": -3.0,
+          "frames": 38383
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "bafca09ccd4b8a43dd30a304f4f4f4662f50df7f0d77453a865f66b7e3f3ce42",
+      "gui_todo": [
+        "Osc A/B Basic Shapes sine tables",
+        "ENV3 to Osc B level matrix route",
+        "Optional slow rotary modulation route"
+      ],
+      "deterministic_repeat": true
+    },
+    "jinx": {
+      "bird": "jinx",
+      "role": "lead",
+      "notes": [
+        {
+          "midi": 67,
+          "file": "jinx/67.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44089
+        },
+        {
+          "midi": 70,
+          "file": "jinx/70.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44100
+        },
+        {
+          "midi": 73,
+          "file": "jinx/73.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44100
+        },
+        {
+          "midi": 76,
+          "file": "jinx/76.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44100
+        },
+        {
+          "midi": 79,
+          "file": "jinx/79.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44100
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "5906859ce4b0d54e06335f5970da9b16963602fb6db6f5d9d35c445155ffc3f2",
+      "gui_todo": [
+        "LFO1 sine Trig mode and routes to cutoff/pitch; Velocity to cutoff matrix route"
+      ],
+      "deterministic_repeat": true
+    },
+    "glint": {
+      "bird": "glint",
+      "role": "lead",
+      "notes": [
+        {
+          "midi": 67,
+          "file": "glint/67.flac",
+          "peak_dbfs": -3.0,
+          "frames": 70557
+        },
+        {
+          "midi": 70,
+          "file": "glint/70.flac",
+          "peak_dbfs": -3.0,
+          "frames": 70560
+        },
+        {
+          "midi": 73,
+          "file": "glint/73.flac",
+          "peak_dbfs": -3.0,
+          "frames": 70560
+        },
+        {
+          "midi": 76,
+          "file": "glint/76.flac",
+          "peak_dbfs": -3.0,
+          "frames": 70560
+        },
+        {
+          "midi": 79,
+          "file": "glint/79.flac",
+          "peak_dbfs": -3.0,
+          "frames": 70560
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "afe015f63940c7126b5987eee1d5ca2cf4007e01ca2c8f6bc478e2a804e94b6b",
+      "gui_todo": [
+        "Osc A/B Basic Shapes sine tables",
+        "ENV2 to FM matrix route",
+        "Velocity to FM amount matrix route"
+      ],
+      "deterministic_repeat": true
+    },
+    "hush": {
+      "bird": "hush",
+      "role": "pad",
+      "notes": [
+        {
+          "midi": 48,
+          "file": "hush/48.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229309
+        },
+        {
+          "midi": 51,
+          "file": "hush/51.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229320
+        },
+        {
+          "midi": 54,
+          "file": "hush/54.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229320
+        },
+        {
+          "midi": 57,
+          "file": "hush/57.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229320
+        },
+        {
+          "midi": 60,
+          "file": "hush/60.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229320
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "8a21855b8efae159ac8cf3d5c46a73243e7a2eaa9ae84d57479ec28194798824",
+      "gui_todo": [
+        "ENV2 to filter cutoff matrix route",
+        "LFO breathing route and LFO shape/mode",
+        "Chorus/Dimension intentionally omitted as non-deterministic"
+      ],
+      "deterministic_repeat": true
+    },
+    "moss": {
+      "bird": "moss",
+      "role": "pad",
+      "notes": [
+        {
+          "midi": 48,
+          "file": "moss/48.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229304
+        },
+        {
+          "midi": 51,
+          "file": "moss/51.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229320
+        },
+        {
+          "midi": 54,
+          "file": "moss/54.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229320
+        },
+        {
+          "midi": 57,
+          "file": "moss/57.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229320
+        },
+        {
+          "midi": 60,
+          "file": "moss/60.flac",
+          "peak_dbfs": -3.0,
+          "frames": 229320
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "261fefcc966bc58496a3c3aef6bbd22f41234f07bb9cb93b3711588e86f3b5eb",
+      "gui_todo": [
+        "Vowel/DudaChoir and Basic Shapes triangle tables unavailable; init table remains",
+        "ENV2 to cutoff matrix route and LFO breathing route"
+      ],
+      "deterministic_repeat": true
+    },
+    "tick": {
+      "bird": "tick",
+      "role": "arp",
+      "notes": [
+        {
+          "midi": 72,
+          "file": "tick/72.flac",
+          "peak_dbfs": -3.0,
+          "frames": 8814
+        },
+        {
+          "midi": 75,
+          "file": "tick/75.flac",
+          "peak_dbfs": -3.0,
+          "frames": 8826
+        },
+        {
+          "midi": 78,
+          "file": "tick/78.flac",
+          "peak_dbfs": -3.0,
+          "frames": 8818
+        },
+        {
+          "midi": 81,
+          "file": "tick/81.flac",
+          "peak_dbfs": -3.0,
+          "frames": 8844
+        },
+        {
+          "midi": 84,
+          "file": "tick/84.flac",
+          "peak_dbfs": -3.0,
+          "frames": 8821
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "7dff9d08bba496436e6db2e7b846a593ba1c98e8c916b3e791f458a4181909e7",
+      "gui_todo": [
+        "ENV2 to filter and ENV3 to pitch matrix routes",
+        "Velocity to cutoff matrix route"
+      ],
+      "deterministic_repeat": true
+    },
+    "pip": {
+      "bird": "pip",
+      "role": "arp",
+      "notes": [
+        {
+          "midi": 72,
+          "file": "pip/72.flac",
+          "peak_dbfs": -3.0,
+          "frames": 9164
+        },
+        {
+          "midi": 75,
+          "file": "pip/75.flac",
+          "peak_dbfs": -3.0,
+          "frames": 9158
+        },
+        {
+          "midi": 78,
+          "file": "pip/78.flac",
+          "peak_dbfs": -3.0,
+          "frames": 9136
+        },
+        {
+          "midi": 81,
+          "file": "pip/81.flac",
+          "peak_dbfs": -3.0,
+          "frames": 9139
+        },
+        {
+          "midi": 84,
+          "file": "pip/84.flac",
+          "peak_dbfs": -3.0,
+          "frames": 9143
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "5694d9260fffabe9489a15e4d5689e5a94bf050685a0e6c52546a058a534cd02",
+      "gui_todo": [
+        "Osc B Basic Shapes sine table unavailable",
+        "ENV2 to filter cutoff matrix route; chorus intentionally omitted"
+      ],
+      "deterministic_repeat": true
+    },
+    "echo": {
+      "bird": "echo",
+      "role": "call",
+      "notes": [
+        {
+          "midi": 64,
+          "file": "echo/64.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44096
+        },
+        {
+          "midi": 67,
+          "file": "echo/67.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44100
+        },
+        {
+          "midi": 70,
+          "file": "echo/70.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44100
+        },
+        {
+          "midi": 73,
+          "file": "echo/73.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44100
+        },
+        {
+          "midi": 76,
+          "file": "echo/76.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44100
+        },
+        {
+          "midi": 79,
+          "file": "echo/79.flac",
+          "peak_dbfs": -3.0,
+          "frames": 44100
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "0df4d366ddf59695509d08fb183a426bbf9800391297ad879dcfee9e94349bff",
+      "gui_todo": [
+        "ENV2 to cutoff vowel movement and LFO vibrato routes; cutoff 300 is oo start estimate, not fitted sweep"
+      ],
+      "deterministic_repeat": true
+    },
+    "wren_not": {
+      "bird": "wren_not",
+      "role": "call",
+      "notes": [
+        {
+          "midi": 64,
+          "file": "wren_not/64.flac",
+          "peak_dbfs": -3.0,
+          "frames": 48504
+        },
+        {
+          "midi": 67,
+          "file": "wren_not/67.flac",
+          "peak_dbfs": -3.0,
+          "frames": 48510
+        },
+        {
+          "midi": 70,
+          "file": "wren_not/70.flac",
+          "peak_dbfs": -3.0,
+          "frames": 48510
+        },
+        {
+          "midi": 73,
+          "file": "wren_not/73.flac",
+          "peak_dbfs": -3.0,
+          "frames": 48510
+        },
+        {
+          "midi": 76,
+          "file": "wren_not/76.flac",
+          "peak_dbfs": -3.0,
+          "frames": 48510
+        },
+        {
+          "midi": 79,
+          "file": "wren_not/79.flac",
+          "peak_dbfs": -3.0,
+          "frames": 48510
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "f314557a46a6d9d71e64c7cc9df2d952612d4756e8c05584e23645a384924772",
+      "gui_todo": [
+        "Osc A Basic Shapes sine table unavailable; vibrato route/LFO shape/mode unavailable",
+        "ENV3 pitch scoop omitted"
+      ],
+      "deterministic_repeat": true
+    },
+    "corvus": {
+      "bird": "corvus",
+      "role": "keys",
+      "notes": [
+        {
+          "midi": 52,
+          "file": "corvus/52.flac",
+          "peak_dbfs": -3.0,
+          "frames": 61725
+        },
+        {
+          "midi": 55,
+          "file": "corvus/55.flac",
+          "peak_dbfs": -3.0,
+          "frames": 61740
+        },
+        {
+          "midi": 58,
+          "file": "corvus/58.flac",
+          "peak_dbfs": -3.0,
+          "frames": 61740
+        },
+        {
+          "midi": 61,
+          "file": "corvus/61.flac",
+          "peak_dbfs": -3.0,
+          "frames": 61740
+        },
+        {
+          "midi": 64,
+          "file": "corvus/64.flac",
+          "peak_dbfs": -3.0,
+          "frames": 61740
+        }
+      ],
+      "sample_rate": 44100,
+      "patch_sha256": "123c5d69176c90940044ea5b0886919a48bef8cd6188eb23252e36d552e4b956",
+      "gui_todo": [
+        "Osc A/B Default saw tables; ENV2 to cutoff matrix route; chorus intentionally omitted",
+        "Corvus is bus FX by default; multisample is optional accent"
+      ],
+      "deterministic_repeat": true
+    }
+  }
+}

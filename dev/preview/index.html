@@ -1,0 +1,95 @@
+<!doctype html>
+<!-- Rookery preview harness. Runs the real desktop/plugin.js inside a stand-in
+     for Hermes Desktop: same SDK surface (shimmed), same theme tokens (the
+     installed app's own compiled CSS), mock backend that follows docs/contract.md. -->
+<html lang="en" class="dark" data-hermes-mode="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rookery Preview</title>
+<link rel="icon" href="data:," />
+<style>
+  /* Seeds the Hermes 'nous' dark skin (apps/shared/src/theme-presets.ts) the way
+     themes/context.tsx applyTheme() does at runtime. */
+  :root {
+    color-scheme: dark;
+    --theme-foreground: #e6edf3; --theme-primary: #4a84fe; --theme-secondary: #1d2e4f;
+    --theme-accent-soft: #17243a; --theme-midground: #4a84fe; --theme-warm: #4a84fe;
+    --theme-background-seed: #0d1117; --theme-sidebar-seed: #010409; --theme-card-seed: #010409;
+    --theme-elevated-seed: #161b22; --theme-bubble-seed: #07162c;
+    --theme-mix-chrome: 74%; --theme-mix-sidebar: 100%; --theme-mix-card: 38%;
+    --theme-mix-elevated: 46%; --theme-mix-bubble: 46%;
+    --dt-border: #30363d; --dt-input: #0d1117; --dt-ring: #4a84fe; --dt-muted: #1a1e24;
+    --dt-primary-foreground: #161616; --dt-destructive: #f85149; --ui-success: #2fb38a;
+    --dt-font-sans: ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+    --dt-font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  html, body, #app { height: 100%; margin: 0; }
+  body { background: var(--ui-bg-chrome, #0d1117); color: var(--ui-text-primary, #e6edf3);
+         font-family: var(--dt-font-sans); font-size: 13px; }
+  .hx-shell { display: grid; grid-template-columns: 208px 1fr; height: 100%; }
+  .hx-dd { background: var(--ui-bg-elevated); border: 1px solid var(--ui-stroke-tertiary); border-radius: 10px; box-shadow: var(--shadow-nous, 0 10px 30px rgba(0,0,0,.4)); overflow: hidden; color: var(--ui-text-primary); }
+  .hx-dd-item { display: flex; align-items: center; cursor: default; user-select: none; outline: none; }
+  .hx-dd-item:not([data-disabled]):hover { background: var(--ui-control-active-background, var(--ui-control-hover-background)); }
+  .hx-dd-item[data-disabled] { opacity: .5; }
+  .hx-dd-sep { height: 1px; background: var(--ui-stroke-tertiary); }
+  .hx-badge { padding: 0 4px; border-radius: 4px; font-size: 9.5px; background: var(--ui-bg-quaternary); color: var(--ui-text-tertiary); }
+  .hx-shell:has(.hx-chat) { grid-template-columns: 208px 1fr 320px; }
+  .hx-md p, .hx-md ul { margin: 0 0 .6em; } .hx-md > :last-child { margin-bottom: 0; } .hx-md ul { padding-left: 1.2em; }
+  .hx-code { font-family: var(--dt-font-mono, monospace); font-size: .9em; padding: .05em .35em; border-radius: 4px; background: var(--ui-bg-quaternary); }
+  .hx-side { background: var(--ui-bg-sidebar); border-right: 1px solid var(--ui-stroke-tertiary); padding: 10px 8px; }
+  .hx-brand { font-weight: 600; padding: 4px 8px 12px; color: var(--ui-text-secondary); letter-spacing: .02em; }
+  .hx-nav { display: flex; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 6px;
+            color: var(--ui-text-secondary); cursor: pointer; }
+  .hx-nav[aria-current="page"] { background: var(--ui-row-active-background); color: var(--ui-text-primary); }
+  .hx-main { background: var(--ui-bg-editor); overflow: auto; min-width: 0; }
+  .hx-chat { min-height: 0; background: var(--ui-bg-chrome); border-left: 1px solid var(--ui-stroke-tertiary);
+             display: flex; flex-direction: column; min-width: 0; }
+  .hx-chat-log { flex: 1; min-height: 0; overflow: auto; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .hx-msg { padding: 8px 10px; border-radius: 10px; line-height: 1.45; }
+  .hx-msg.user { align-self: flex-end; background: var(--ui-chat-bubble-background); max-width: 85%; }
+  .hx-msg.tool { color: var(--ui-text-tertiary); font-family: var(--dt-font-mono); font-size: 11.5px; padding: 2px 4px; }
+  .hx-chat-bar { padding: 10px; border-top: 1px solid var(--ui-stroke-tertiary); display: flex; flex-direction: column; gap: 8px; }
+  .hx-tag { font-size: 10.5px; color: var(--ui-text-quaternary); text-transform: uppercase; letter-spacing: .08em; }
+  .hx-btn { font: inherit; padding: 7px 10px; border-radius: 7px; border: 1px solid var(--ui-stroke-secondary);
+            background: var(--ui-bg-card); color: var(--ui-text-primary); cursor: pointer; text-align: left; }
+  .hx-btn:hover { background: var(--ui-control-hover-background); }
+  .hx-btn[disabled] { opacity: .5; cursor: default; }
+  .hx-card { margin: 2px 0; }
+  .hx-err { padding: 16px; color: var(--ui-red); font-family: var(--dt-font-mono); white-space: pre-wrap; }
+  @media (max-width: 900px) { .hx-shell { grid-template-columns: 1fr; } .hx-side, .hx-chat { display: none; } }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.3.0",
+    "react/jsx-runtime": "https://esm.sh/react@19.3.0/jsx-runtime",
+    "react-dom/client": "https://esm.sh/react-dom@19.3.0/client?deps=react@19.3.0",
+    "@hermes/plugin-sdk": "/dev/preview/sdk-shim.js"
+  }
+}
+</script>
+</head>
+<body>
+<div id="app"></div>
+<script type="module">
+  // Pull in the installed app's real stylesheets so --ui-* tokens and utility
+  // classes match Hermes Desktop exactly.
+  const sheets = await fetch('/hermes/styles.json').then(r => r.json()).catch(() => [])
+  for (const name of sheets) {
+    const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = '/hermes/assets/' + name
+    document.head.prepend(l)
+  }
+  if (!sheets.length) console.warn('[preview] Hermes Desktop styles not found; tokens fall back to defaults')
+
+  new EventSource('/__reload').onmessage = () => location.reload()
+
+  try {
+    await import('/dev/preview/harness.js')
+  } catch (e) {
+    document.getElementById('app').innerHTML = '<div class="hx-err"></div>'
+    document.querySelector('.hx-err').textContent = 'Harness failed to load:\n' + (e && e.stack || e)
+  }
+</script>
+</body>
+</html>

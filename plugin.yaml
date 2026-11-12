@@ -1,0 +1,27 @@
+name: rookery
+version: "0.2.0"
+description: A step-sequencer beat lab for Hermes.
+license: GPL-3.0-only
+requires_hermes: ">=0.23.0"
+provides_tools:
+  - rookery_new
+  - rookery_steps
+  - rookery_track
+  - rookery_mix
+  - rookery_apply
+  - rookery_render
+  - rookery_export
+  - rookery_state
+  - rookery_undo
+  - rookery_kits
+  - rookery_samples
+# Optional, not required: `/v1/sounds/{id}/file` needs a free Soundza key;
+# searching works without one. Hermes offers this in `hermes config` (it is not
+# prompted at install) and `rookery_samples` explains a missing key on fetch.
+# Deliberately indented four spaces so the tools-only scan in
+# tests/engine/test_plugin.py reads only provides_tools as tool names.
+optional_env:
+    - name: SOUNDZA_API_KEY
+      description: "Free Soundza API key for full-quality sample downloads in rookery_samples. Search works without it; fetch needs it."
+      url: "https://soundza.com/developers/keys"
+      password: true

@@ -1,0 +1,296 @@
+{
+  "default_genre": "boom-bap",
+  "roles": {
+    "kick": {
+      "targets": {
+        "boom-bap": [
+          0,
+          0
+        ],
+        "trap": [
+          0,
+          0
+        ]
+      },
+      "default_gain_db": 0,
+      "default_pan": 0
+    },
+    "snare_clap": {
+      "targets": {
+        "boom-bap": [
+          -3,
+          1
+        ],
+        "trap": [
+          -3,
+          1
+        ]
+      },
+      "default_gain_db": -2,
+      "default_pan": 0
+    },
+    "hat": {
+      "targets": {
+        "boom-bap": [
+          -12,
+          -7
+        ],
+        "trap": [
+          -10,
+          -5
+        ]
+      },
+      "default_gain_db": -10,
+      "default_pan": 0.15
+    },
+    "hat_open": {
+      "targets": {
+        "boom-bap": [
+          -14,
+          -8
+        ],
+        "trap": [
+          -12,
+          -7
+        ]
+      },
+      "default_gain_db": -12,
+      "default_pan": -0.15
+    },
+    "perc_rim": {
+      "targets": {
+        "boom-bap": [
+          -14,
+          -7
+        ],
+        "trap": [
+          -14,
+          -7
+        ]
+      },
+      "default_gain_db": -10,
+      "default_pan": -0.2
+    },
+    "bass": {
+      "targets": {
+        "boom-bap": [
+          -6,
+          -2
+        ],
+        "trap": [
+          -3,
+          1
+        ]
+      },
+      "default_gain_db": {
+        "boom-bap": -6,
+        "trap": -3
+      },
+      "default_pan": 0
+    },
+    "sample_loop": {
+      "targets": {
+        "boom-bap": [
+          -8,
+          -3
+        ],
+        "trap": [
+          -8,
+          -3
+        ]
+      },
+      "default_gain_db": -6,
+      "default_pan": 0
+    },
+    "sample_bed": {
+      "targets": {
+        "boom-bap": [-8, -4],
+        "trap": [-8, -4]
+      },
+      "default_gain_db": -6,
+      "default_pan": 0
+    },
+    "sample_lead": {
+      "targets": {
+        "boom-bap": [-5, -1],
+        "trap": [-5, -1]
+      },
+      "default_gain_db": -3,
+      "default_pan": 0.2
+    },
+    "sample_counter": {
+      "targets": {
+        "boom-bap": [-11, -6],
+        "trap": [-11, -6]
+      },
+      "default_gain_db": -8.5,
+      "default_pan": -0.25
+    },
+    "sample_drums": {
+      "targets": {
+        "boom-bap": [-6, -2],
+        "trap": [-6, -2]
+      },
+      "default_gain_db": -4,
+      "default_pan": 0
+    },
+    "sample_one_shot": {
+      "targets": {
+        "boom-bap": [
+          -8,
+          -3
+        ],
+        "trap": [
+          -8,
+          -3
+        ]
+      },
+      "default_gain_db": -6,
+      "default_pan": 0
+    },
+    "texture": {
+      "targets": {
+        "boom-bap": [
+          -20,
+          -12
+        ],
+        "trap": [
+          -20,
+          -12
+        ]
+      },
+      "default_gain_db": -14,
+      "default_pan": 0
+    },
+    "flock_bass": {
+      "targets": {
+        "boom-bap": [
+          -6,
+          -2
+        ],
+        "trap": [
+          -3,
+          1
+        ]
+      },
+      "default_gain_db": null,
+      "default_pan": null
+    },
+    "flock_lead": {
+      "targets": {
+        "boom-bap": [
+          -6,
+          -2
+        ],
+        "trap": [
+          -6,
+          -2
+        ]
+      },
+      "default_gain_db": null,
+      "default_pan": null
+    },
+    "flock_call": {
+      "targets": {
+        "boom-bap": [
+          -7,
+          -3
+        ],
+        "trap": [
+          -7,
+          -3
+        ]
+      },
+      "default_gain_db": null,
+      "default_pan": null
+    },
+    "flock_keys": {
+      "targets": {
+        "boom-bap": [
+          -9,
+          -4
+        ],
+        "trap": [
+          -9,
+          -4
+        ]
+      },
+      "default_gain_db": null,
+      "default_pan": null
+    },
+    "flock_arp": {
+      "targets": {
+        "boom-bap": [
+          -11,
+          -6
+        ],
+        "trap": [
+          -10,
+          -5
+        ]
+      },
+      "default_gain_db": null,
+      "default_pan": null
+    },
+    "flock_pad": {
+      "targets": {
+        "boom-bap": [
+          -14,
+          -8
+        ],
+        "trap": [
+          -14,
+          -8
+        ]
+      },
+      "default_gain_db": null,
+      "default_pan": null
+    }
+  },
+  "source_level_lu": {
+    "_note": "Measured LU vs factory:kick_punch at 0 dB, theory-boom-bap-ghost groove, 4 bars (Claude, 2026-11-11). Add-time default gain = target midpoint minus this level.",
+    "808": 2.4,
+    "808_bloom": 2.4,
+    "808_drop": -8.9,
+    "808_grit": -6.0,
+    "808_long_glide": 0.5,
+    "808_round": 7.0,
+    "808_sub_clean": 6.1,
+    "clap": -8.2,
+    "clap_body": -4.6,
+    "clap_dust": -5.7,
+    "clap_sharp": -6.3,
+    "clap_stack": -7.7,
+    "clap_tail": -10.8,
+    "clap_wide": -9.1,
+    "hat_bright": -13.9,
+    "hat_closed": -12.2,
+    "hat_closed_bright": -21.6,
+    "hat_closed_dark": -16.9,
+    "hat_closed_dust": -21.0,
+    "hat_closed_metal": -10.4,
+    "hat_closed_tight_tick": -17.0,
+    "hat_open": -4.9,
+    "hat_open_bright": -4.6,
+    "hat_open_dark": -5.9,
+    "hat_open_long": -7.2,
+    "hat_open_short": -7.8,
+    "hat_open_sizzle": -8.1,
+    "hat_open_wash": -2.0,
+    "hat_tight": -15.3,
+    "perc": -8.5,
+    "perc_bongo": -14.8,
+    "perc_rimshot": -13.7,
+    "perc_tom_high": -12.5,
+    "perc_tom_low": -15.6,
+    "perc_woodblock": -18.4,
+    "rim": -15.8,
+    "snare_body": -3.4,
+    "snare_burst": -4.9,
+    "snare_crack": -7.9,
+    "snare_crack_wide": -10.4,
+    "snare_dust": -3.9,
+    "snare_snap": -3.5,
+    "snare_snap_dry": -4.8
+  }
+}

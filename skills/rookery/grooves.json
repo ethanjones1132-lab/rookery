@@ -1,0 +1,749 @@
+{
+  "schema": "rookery.grooves/1",
+  "steps_per_bar": 16,
+  "roles": [
+    "kick",
+    "snare",
+    "clap",
+    "hat",
+    "hat_open",
+    "perc"
+  ],
+  "note": "Starting points, not transcriptions. Match genre and BPM, build the roles from `sources`, repeat the pattern to fill 4 or 8 bars, then change one element. Velocities align with the step string. Swing is Rookery's swing value: 0.4 delays offbeat 16ths by 20% of a step.",
+  "sources": {
+    "kick": "factory:kick_boom",
+    "snare": "factory:snare_crack",
+    "clap": "factory:clap",
+    "hat": "factory:hat_closed",
+    "hat_open": "factory:hat_open",
+    "perc": "factory:perc"
+  },
+  "templates": [
+    {
+      "id": "pocket-88-clap-pocket",
+      "name": "88 Clap Pocket",
+      "genre": "boom bap",
+      "bpm_range": [84, 92],
+      "swing": 0.4,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Loose 88 bpm clap backbeat with a lazy second kick.",
+      "variations": [
+        "fill bar: add clap 16ths at steps 12-15",
+        "half-time: move the clap to 8 and the kick to 0 and 6",
+        "double-time hats: hat every 16th at 0.35"
+      ],
+      "derived_from": [
+        "Drum Loop 2 - 88 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x.......x.x.....",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "clap": {
+          "steps": "....x.......x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "x.x.x.x.x.x.x.x.",
+          "velocity": [0.55, 0.0, 0.38, 0.0, 0.55, 0.0, 0.38, 0.0, 0.55, 0.0, 0.38, 0.0, 0.55, 0.0, 0.38, 0.0]
+        },
+        "perc": {
+          "steps": ".......x.......x",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.45]
+        }
+      }
+    },
+    {
+      "id": "pocket-95-ghost-snare",
+      "name": "95 Ghost Snare",
+      "genre": "boom bap",
+      "bpm_range": [90, 100],
+      "swing": 0.42,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Head-nod backbeat with a ghost snare dragging into each bar turn.",
+      "variations": [
+        "fill bar: 16th snare roll from step 8",
+        "half-time: snare on 8 only",
+        "double-time hats: 16ths, accent on the beats"
+      ],
+      "derived_from": [
+        "Drum Loop 6 - 95 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x..x..x....x....",
+          "velocity": [1.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.0, 0.75, 0.0, 0.0, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "....x..x....x..x",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.28]
+        },
+        "hat": {
+          "steps": "x.x.x.x.x.x.x.x.",
+          "velocity": [0.5, 0.0, 0.35, 0.0, 0.5, 0.0, 0.35, 0.0, 0.5, 0.0, 0.35, 0.0, 0.5, 0.0, 0.35, 0.0]
+        },
+        "hat_open": {
+          "steps": "...............x",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.55]
+        }
+      }
+    },
+    {
+      "id": "pocket-104-dancehall",
+      "name": "104 Dancehall",
+      "genre": "dancehall",
+      "bpm_range": [98, 108],
+      "swing": 0.2,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Dancehall kick on the and-of-2 with a clipped offbeat hat.",
+      "variations": [
+        "fill bar: clap on 14 and 15",
+        "half-time: kick on 0 and 10, clap on 8",
+        "double-time hats: shaker 16ths at 0.3"
+      ],
+      "derived_from": [
+        "Drum Loop 5 - 104 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x.....x...x.....",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "....x.......x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "x.x.x.x.x.x.x.x.",
+          "velocity": [0.45, 0.0, 0.3, 0.0, 0.45, 0.0, 0.3, 0.0, 0.45, 0.0, 0.3, 0.0, 0.45, 0.0, 0.3, 0.0]
+        },
+        "hat_open": {
+          "steps": "...x.......x....",
+          "velocity": [0.0, 0.0, 0.0, 0.65, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.0]
+        },
+        "perc": {
+          "steps": "..x...x.......x.",
+          "velocity": [0.0, 0.0, 0.55, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0]
+        }
+      }
+    },
+    {
+      "id": "pocket-107-funk-strut",
+      "name": "107 Funk Strut",
+      "genre": "funk",
+      "bpm_range": [104, 112],
+      "swing": 0.36,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Strutting funk kick with rim answers on the off-beats.",
+      "variations": [
+        "fill bar: rim roll on steps 12-15",
+        "half-time: kick 0 and 8, snare 12",
+        "double-time hats: close 16ths with beat accents"
+      ],
+      "derived_from": [
+        "Drum Loop 9 - 107 BPM",
+        "CDK4 - Drum Fill 133 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x..x..x...x..x..",
+          "velocity": [1.0, 0.0, 0.0, 0.75, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.7, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "....x....x..x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0, 0.0, 0.3, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "x.xxx.x.xxx.x.x.",
+          "velocity": [0.6, 0.0, 0.35, 0.5, 0.45, 0.0, 0.35, 0.0, 0.55, 0.35, 0.45, 0.0, 0.5, 0.0, 0.35, 0.0]
+        },
+        "perc": {
+          "steps": "..x....x...x...x",
+          "velocity": [0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.55, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.55]
+        }
+      }
+    },
+    {
+      "id": "pocket-123-halftime-roll",
+      "name": "123 Half-time Roll",
+      "genre": "trap",
+      "bpm_range": [118, 128],
+      "swing": 0.24,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Bouncing half-time snare with rolling 16th hats.",
+      "variations": [
+        "fill bar: hat roll on steps 12-15",
+        "half-time: snare stays on 8, drop the kick at 7",
+        "double-time hats: 32nd-style repeat roll on the last beat"
+      ],
+      "derived_from": [
+        "Drum Loop 8 - 123 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x......x..x.....",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "........x.......",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "x.xxx..xx.xxx.xx",
+          "velocity": [0.55, 0.0, 0.3, 0.45, 0.5, 0.0, 0.0, 0.3, 0.55, 0.0, 0.3, 0.45, 0.5, 0.0, 0.3, 0.45]
+        },
+        "hat_open": {
+          "steps": "......x.........",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      }
+    },
+    {
+      "id": "pocket-127-open-wash",
+      "name": "127 Open Wash",
+      "genre": "trap",
+      "bpm_range": [124, 132],
+      "swing": 0.16,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Sparse trap with open hats washing every offbeat.",
+      "variations": [
+        "fill bar: open hat on 12 and 14",
+        "half-time: drop the kick at 3 and 14",
+        "double-time hats: closed 16ths under the open hats"
+      ],
+      "derived_from": [
+        "Drum Loop 10 - 127 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x..x......x...x.",
+          "velocity": [1.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.7, 0.0]
+        },
+        "clap": {
+          "steps": "....x.......x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "x...x...x...x...",
+          "velocity": [0.5, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0]
+        },
+        "hat_open": {
+          "steps": "..x...x...x...x.",
+          "velocity": [0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.75, 0.0, 0.0, 0.0, 0.65, 0.0]
+        }
+      }
+    },
+    {
+      "id": "pocket-132-trap-bounce",
+      "name": "132 Trap Bounce",
+      "genre": "trap",
+      "bpm_range": [128, 136],
+      "swing": 0.12,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Busy 808 kick under a half-time snare and even 16ths.",
+      "variations": [
+        "fill bar: kick on 12, 13, 15",
+        "half-time: snare on 8, kick 0 and 8",
+        "double-time hats: 16ths with an accent every beat"
+      ],
+      "derived_from": [
+        "Drum Loop 4 - 132 BPM",
+        "CDK4 - Drum Fill 150 BPM 2"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x.x..x...x..x...",
+          "velocity": [1.0, 0.0, 0.75, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "........x.......",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "xxxxxxxxxxxxxxxx",
+          "velocity": [0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3]
+        }
+      }
+    },
+    {
+      "id": "pocket-142-skitter",
+      "name": "142 Skitter",
+      "genre": "trap",
+      "bpm_range": [138, 146],
+      "swing": 0.16,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Skittering 16ths around a half-time snare, open hat on the last beat.",
+      "variations": [
+        "fill bar: hat roll on 13-15",
+        "half-time: snare on 8 only, kick 0 and 10",
+        "double-time hats: 16ths throughout"
+      ],
+      "derived_from": [
+        "Drum Loop 7 - 142 BPM",
+        "CDK4 - Drum Fill 175 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x....xx.......x.",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.8, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0]
+        },
+        "snare": {
+          "steps": "........x......x",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4]
+        },
+        "hat": {
+          "steps": "x.xxx.xxx.xx..xx",
+          "velocity": [0.6, 0.0, 0.35, 0.45, 0.5, 0.0, 0.3, 0.4, 0.55, 0.0, 0.3, 0.4, 0.0, 0.0, 0.45, 0.35]
+        },
+        "hat_open": {
+          "steps": "............x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.55, 0.0, 0.0, 0.0]
+        }
+      }
+    },
+    {
+      "id": "pocket-152-hat-run",
+      "name": "152 Hat Run",
+      "genre": "trap",
+      "bpm_range": [148, 156],
+      "swing": 0.12,
+      "bars": 2,
+      "source": "distilled",
+      "feel": "Laid-back half-time snare with a 16th hat run in the second bar.",
+      "variations": [
+        "fill bar: snare 16ths on 12-15 of bar 2",
+        "half-time: snare on 8 and 24, hats on 8ths",
+        "double-time hats: repeat the bar-2 run"
+      ],
+      "derived_from": [
+        "Drum Loop 1 - 152 BPM",
+        "CDK4 - Drill Hats 141 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x..x......x.....x.....x...x...x.",
+          "velocity": [1.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.75, 0.0]
+        },
+        "snare": {
+          "steps": "........x......x........x......x",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.35]
+        },
+        "hat": {
+          "steps": "x.x.x.x.x.x.x.x.xxxxxxxxxxxxxxxx",
+          "velocity": [0.5, 0.0, 0.35, 0.0, 0.5, 0.0, 0.35, 0.0, 0.5, 0.0, 0.35, 0.0, 0.5, 0.0, 0.35, 0.0, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3, 0.55, 0.3]
+        },
+        "hat_open": {
+          "steps": ".......x...............x........",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      }
+    },
+    {
+      "id": "pocket-180-jungle-chop",
+      "name": "180 Jungle Chop",
+      "genre": "jungle",
+      "bpm_range": [168, 184],
+      "swing": 0.16,
+      "bars": 2,
+      "source": "distilled",
+      "feel": "Chopped jungle break with a snare flurry in the second bar.",
+      "variations": [
+        "fill bar: snare on every 16th of bar 2",
+        "half-time: snare on 8 and 24 only",
+        "double-time hats: 16ths with open-hat lifts"
+      ],
+      "derived_from": [
+        "Drum Loop 3 - 180 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x.....x...x.....x...x..x...x....",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.75, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "....x.......x.......x..x....x..x",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.5]
+        },
+        "hat": {
+          "steps": "xxxxxxx.xxxxxxxxxxx.xxxxxxxxxx.x",
+          "velocity": [0.5, 0.3, 0.5, 0.3, 0.5, 0.3, 0.5, 0.0, 0.5, 0.3, 0.5, 0.3, 0.5, 0.3, 0.5, 0.3, 0.5, 0.3, 0.5, 0.0, 0.5, 0.3, 0.5, 0.3, 0.5, 0.3, 0.5, 0.3, 0.5, 0.3, 0.0, 0.3]
+        },
+        "hat_open": {
+          "steps": ".......x...........x..........x.",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.55, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0]
+        },
+        "perc": {
+          "steps": "..x......x...............x...x..",
+          "velocity": [0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0]
+        }
+      }
+    },
+    {
+      "id": "pocket-89-swung-hats",
+      "name": "89 Swung Hats",
+      "genre": "lo-fi",
+      "bpm_range": [84, 94],
+      "swing": 0.46,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Dusty, late 8th hats with a ghost kick under the backbeat.",
+      "variations": [
+        "fill bar: hat 16ths on 12-15 with falling velocities",
+        "half-time: snare on 8, kick on 0",
+        "double-time hats: 16ths with the same swing"
+      ],
+      "derived_from": [
+        "CDK4 - Swing Hats 89 BPM",
+        "CDK4 - Hat Loop 90 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x........x...x..",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.35, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "....x..x....x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "x.x.x.x.x.x.x.xx",
+          "velocity": [0.5, 0.0, 0.3, 0.0, 0.5, 0.0, 0.3, 0.0, 0.5, 0.0, 0.3, 0.0, 0.5, 0.0, 0.3, 0.35]
+        },
+        "hat_open": {
+          "steps": ".......x........",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      }
+    },
+    {
+      "id": "pocket-124-tribal-house",
+      "name": "124 Tribal House",
+      "genre": "afro house",
+      "bpm_range": [118, 128],
+      "swing": 0.24,
+      "bars": 1,
+      "source": "distilled",
+      "feel": "Four-on-the-floor with a tribal 16th shaker and open-hat lifts.",
+      "variations": [
+        "fill bar: perc roll on 12-15",
+        "half-time: kick on 0 and 8, clap on 12",
+        "double-time hats: shaker 16ths at 0.35"
+      ],
+      "derived_from": [
+        "CDK4 - Triangle Loop 124 BPM",
+        "CDK4 - Perc Loop 130 BPM"
+      ],
+      "tracks": {
+        "kick": {
+          "steps": "x...x...x...x...",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0]
+        },
+        "clap": {
+          "steps": "....x.......x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "xxx.xxxxxxx.xxxx",
+          "velocity": [0.4, 0.25, 0.4, 0.0, 0.4, 0.25, 0.4, 0.25, 0.4, 0.25, 0.4, 0.0, 0.4, 0.25, 0.4, 0.25]
+        },
+        "hat_open": {
+          "steps": "...x.......x....",
+          "velocity": [0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.65, 0.0, 0.0, 0.0, 0.0]
+        },
+        "perc": {
+          "steps": "x..x..x...x.x...",
+          "velocity": [0.6, 0.0, 0.0, 0.5, 0.0, 0.0, 0.55, 0.0, 0.0, 0.0, 0.6, 0.0, 0.5, 0.0, 0.0, 0.0]
+        }
+      }
+    },
+    {
+      "id": "theory-boom-bap-ghost",
+      "name": "Boom Bap Ghost",
+      "genre": "boom bap",
+      "bpm_range": [86, 94],
+      "swing": 0.42,
+      "bars": 1,
+      "source": "theory",
+      "feel": "Backbeat on 2 and 4; ghost snares drag the pocket.",
+      "variations": [
+        "fill bar: snare 16ths on 12-15",
+        "half-time: snare on 8, kick on 0 and 6",
+        "double-time hats: 16ths, accent the beats"
+      ],
+      "rationale": "The backbeat is on 2 and 4. Ghost snares on the last 16th of each two-beat group (6 and 14) sit under the main hits; together with swing 0.42 they make the drums drag without losing the pulse.",
+      "tracks": {
+        "kick": {
+          "steps": "x......x..x.....",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "....x.x.....x.x.",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.32, 0.0, 0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.3, 0.0]
+        },
+        "hat": {
+          "steps": "x.x.x.x.x.x.x.x.",
+          "velocity": [0.55, 0.0, 0.35, 0.0, 0.55, 0.0, 0.35, 0.0, 0.55, 0.0, 0.35, 0.0, 0.55, 0.0, 0.35, 0.0]
+        }
+      }
+    },
+    {
+      "id": "theory-trap-rolls",
+      "name": "Trap Rolls",
+      "genre": "trap",
+      "bpm_range": [138, 150],
+      "swing": 0.0,
+      "bars": 2,
+      "source": "theory",
+      "feel": "Half-time snare; bar 2 is an 8th-note triplet hat bar.",
+      "variations": [
+        "fill bar: snare 16ths on 28-31",
+        "half-time: snare on 8 and 24, drop the second kick",
+        "double-time hats: 1/32 roll on the last beat (double steps 28-31)"
+      ],
+      "rationale": "The snare stays on beat 3. Bar 1 is a straight 16th grid; bar 2 rounds 8th-note triplets to the 16-grid (0, 1, 3, 4, 5, 7 ...). A 1/32 roll is two hits per 16th: double steps 28-31 in the tool.",
+      "tracks": {
+        "kick": {
+          "steps": "x......x..x.....x..x....x..x....",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "........x...............x.......",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "x.xxx.xxx.xxx.xxxx.xxx.xxx.xxx.x",
+          "velocity": [0.55, 0.0, 0.3, 0.45, 0.5, 0.0, 0.3, 0.4, 0.55, 0.0, 0.3, 0.45, 0.5, 0.0, 0.3, 0.45, 0.6, 0.35, 0.0, 0.45, 0.6, 0.35, 0.0, 0.45, 0.6, 0.35, 0.0, 0.45, 0.6, 0.35, 0.0, 0.45]
+        }
+      }
+    },
+    {
+      "id": "theory-uk-garage-2step",
+      "name": "UK Garage 2-Step",
+      "genre": "uk garage",
+      "bpm_range": [130, 138],
+      "swing": 0.4,
+      "bars": 1,
+      "source": "theory",
+      "feel": "Two-step kick on 1 and the and-of-2, clap on 2 and 4.",
+      "variations": [
+        "fill bar: clap on 14 and 15",
+        "half-time: clap on 8, kick on 0 and 10",
+        "double-time hats: 16ths with offbeat accents"
+      ],
+      "rationale": "The 2-step skips the second kick: one kick on beat 1 and one on the 'and' of 2, with the clap answering on 2 and 4. Offbeat hats and a light shuffle are the genre's signature.",
+      "tracks": {
+        "kick": {
+          "steps": "x.....x...x.....",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": ".......x........",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "clap": {
+          "steps": "....x.......x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "..x...x...x...x.",
+          "velocity": [0.0, 0.0, 0.55, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.45, 0.0]
+        },
+        "hat_open": {
+          "steps": "...x.......x....",
+          "velocity": [0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0]
+        },
+        "perc": {
+          "steps": "...............x",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4]
+        }
+      }
+    },
+    {
+      "id": "theory-house-4floor",
+      "name": "House 4-Floor",
+      "genre": "house",
+      "bpm_range": [120, 128],
+      "swing": 0.08,
+      "bars": 1,
+      "source": "theory",
+      "feel": "Four-on-the-floor kick, open hats on the offbeat 8ths.",
+      "variations": [
+        "fill bar: open hat on 12, 13, 14, 15",
+        "half-time: kick on 0 and 8, open hat on 4 and 12",
+        "double-time hats: closed 16ths under the open hats"
+      ],
+      "rationale": "House is a four-on-the-floor pulse. The open hat lands on every offbeat 8th (2, 6, 10, 14) so the bar breathes between kicks; the clap marks 2 and 4 without doubling the kick.",
+      "tracks": {
+        "kick": {
+          "steps": "x...x...x...x...",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.95, 0.0, 0.0, 0.0]
+        },
+        "clap": {
+          "steps": "....x.......x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "x...x...x...x...",
+          "velocity": [0.35, 0.0, 0.0, 0.0, 0.35, 0.0, 0.0, 0.0, 0.35, 0.0, 0.0, 0.0, 0.35, 0.0, 0.0, 0.0]
+        },
+        "hat_open": {
+          "steps": "..x...x...x...x.",
+          "velocity": [0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.8, 0.0]
+        }
+      }
+    },
+    {
+      "id": "theory-lofi-limp",
+      "name": "Lo-fi Limp",
+      "genre": "lo-fi",
+      "bpm_range": [80, 92],
+      "swing": 0.46,
+      "bars": 1,
+      "source": "theory",
+      "feel": "Lazy swing pushes every offbeat late; a ghost kick makes it limp.",
+      "variations": [
+        "fill bar: hat 16ths on 12-15, falling velocities",
+        "half-time: kick on 0 and 8, snare on 12",
+        "double-time hats: 16ths with swing 0.46"
+      ],
+      "rationale": "Lo-fi is less about notes than placement. Swing 0.46 delays every offbeat 16th, the ghost kick at 6 (velocity 0.35) sits before beat 3, and the skipped hat at 14 leaves a hole for the snare tail.",
+      "tracks": {
+        "kick": {
+          "steps": "x.....x....x....",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.35, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+        },
+        "snare": {
+          "steps": "....x.......x..x",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.3]
+        },
+        "hat": {
+          "steps": "x.x.x.x.x.x.x...",
+          "velocity": [0.45, 0.0, 0.3, 0.0, 0.45, 0.0, 0.3, 0.0, 0.45, 0.0, 0.3, 0.0, 0.45, 0.0, 0.0, 0.0]
+        },
+        "hat_open": {
+          "steps": "..............x.",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.45, 0.0]
+        },
+        "perc": {
+          "steps": ".........x......",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.35, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      }
+    },
+    {
+      "id": "theory-drill-slide",
+      "name": "Drill Slide",
+      "genre": "drill",
+      "bpm_range": [138, 146],
+      "swing": 0.1,
+      "bars": 2,
+      "source": "theory",
+      "feel": "Half-time drill snare; the 808 slides along the kick lane.",
+      "variations": [
+        "slide bar: long 808 glide from 0 to 3",
+        "half-time: snare on 8 and 24, kick on 0 and 16",
+        "double-time hats: 1/32 rolls on 12-15 of each bar"
+      ],
+      "rationale": "Drill keeps the snare on beat 3 and lets the 808 slide. Read the kick lane as the 808 lane: one bass note per kick, gliding pitch between 0 and 3, and again between 10/11 in bar 2, tails overlapping.",
+      "tracks": {
+        "kick": {
+          "steps": "x..x......x.....x.....x....x..x.",
+          "velocity": [1.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.75, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.7, 0.0]
+        },
+        "snare": {
+          "steps": "........x...............x.......",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "xx.xxx.xxx.xxx.xx.x.x.x.x.x.xxxx",
+          "velocity": [0.55, 0.35, 0.0, 0.45, 0.5, 0.3, 0.0, 0.4, 0.55, 0.3, 0.0, 0.45, 0.5, 0.3, 0.0, 0.45, 0.5, 0.0, 0.35, 0.0, 0.45, 0.0, 0.5, 0.0, 0.55, 0.0, 0.35, 0.0, 0.5, 0.35, 0.4, 0.3]
+        },
+        "hat_open": {
+          "steps": "..............x........x........",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      }
+    },
+    {
+      "id": "theory-afrobeats-clave",
+      "name": "Afrobeats Clave",
+      "genre": "afrobeats",
+      "bpm_range": [100, 112],
+      "swing": 0.24,
+      "bars": 2,
+      "source": "theory",
+      "feel": "3-2 son clave on the perc lane; the kick answers the clave.",
+      "variations": [
+        "fill bar: perc on 28-31",
+        "half-time: kick on 0 and 16, clap on 12 and 28",
+        "double-time hats: offbeat 16ths"
+      ],
+      "rationale": "The 3-2 son clave falls at 0, 6, 12 | 20, 24 over two bars. The kick doubles the first and last strokes, and the clap stays on the backbeat, so the pattern reads as Afrobeats rather than Latin.",
+      "tracks": {
+        "kick": {
+          "steps": "x.....x...x.....x.....x...x.x...",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.0, 0.8, 0.0, 0.75, 0.0, 0.0, 0.0]
+        },
+        "clap": {
+          "steps": "....x.......x.......x.......x...",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0]
+        },
+        "hat": {
+          "steps": "..x...x...x...x...x...x...x...x.",
+          "velocity": [0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.45, 0.0]
+        },
+        "perc": {
+          "steps": "x.....x.....x.......x...x.......",
+          "velocity": [0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.65, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.75, 0.0, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        }
+      }
+    },
+    {
+      "id": "theory-half-time-break",
+      "name": "Half-time Break",
+      "genre": "breakbeat",
+      "bpm_range": [160, 176],
+      "swing": 0.14,
+      "bars": 2,
+      "source": "theory",
+      "feel": "Half-time break: the snare lands only on beat 3.",
+      "variations": [
+        "fill bar: snare 16ths on 28-31",
+        "half-time: snare on 8 and 24, kick on 0 and 16",
+        "double-time hats: 16ths with open-hat lifts"
+      ],
+      "rationale": "A half-time break keeps double-time motion in the kick and hats while the snare hits only beat 3 of each bar. The second bar adds one pickup snare at 30 so the loop turns over.",
+      "tracks": {
+        "kick": {
+          "steps": "x......x..x.....x...x......x..x.",
+          "velocity": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.85, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9, 0.0, 0.0, 0.75, 0.0]
+        },
+        "snare": {
+          "steps": "........x...............x.....x.",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.0]
+        },
+        "hat": {
+          "steps": "xxxxxxxxxxxxxxx.xxxxxxxxxxxxxxx.",
+          "velocity": [0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.0, 0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.3, 0.45, 0.0]
+        },
+        "hat_open": {
+          "steps": "...............x...............x",
+          "velocity": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6]
+        },
+        "perc": {
+          "steps": "...x.......x.......x.......x....",
+          "velocity": [0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.45, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0]
+        }
+      }
+    }
+  ]
+}

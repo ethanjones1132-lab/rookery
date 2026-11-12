@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77,<90"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rookery"
+version = "0.2.0"
+description = "A step-sequencer beat lab for Hermes."
+license = "GPL-3.0-only"
+requires-python = ">=3.11"
+dependencies = [
+    "pedalboard>=0.9.26,<0.10",
+    "numpy>=2,<3",
+    "scipy>=1.11,<2",
+    "soundfile>=0.13,<0.15",
+    "pyloudnorm>=0.2,<0.3",
+]
+
+[tool.setuptools.packages.find]
+include = ["rookery", "rookery.*"]
+
+[tool.setuptools.package-data]
+"rookery" = ["mix_targets.json", "tool_schemas.json"]
+"rookery.flock" = ["birds.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+# Stop pytest walking above tests/ when it expands collection paths. Without
+# this, the repo root (the Hermes plugin entry with its relative import) is
+# collected as a package and imported, which only works when the checkout
+# folder happens to be named `rookery`.
+addopts = "--import-mode=importlib --confcutdir=tests"
+testpaths = ["tests"]

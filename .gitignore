@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+renders/
+*.wav
+.crew/
+.env*
+node_modules/

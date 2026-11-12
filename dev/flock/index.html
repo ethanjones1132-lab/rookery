@@ -1,0 +1,83 @@
+<!doctype html>
+<!-- Standalone Rookery Flock prototype. Uses the preview server's installed Hermes styles. -->
+<html lang="en" class="dark" data-hermes-mode="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rookery · The Flock</title>
+<link rel="icon" href="data:," />
+<style>
+  /* Hermes 'nous' dark skin seeds (harness only: the real app sets these at runtime, see dev/preview/index.html). */
+  :root {
+    color-scheme: dark;
+    --theme-foreground: #e6edf3; --theme-primary: #4a84fe; --theme-secondary: #1d2e4f;
+    --theme-accent-soft: #17243a; --theme-midground: #4a84fe; --theme-warm: #4a84fe;
+    --theme-background-seed: #0d1117; --theme-sidebar-seed: #010409; --theme-card-seed: #010409;
+    --theme-elevated-seed: #161b22; --theme-bubble-seed: #07162c;
+    --theme-mix-chrome: 74%; --theme-mix-sidebar: 100%; --theme-mix-card: 38%;
+    --theme-mix-elevated: 46%; --theme-mix-bubble: 46%;
+    --dt-border: #30363d; --dt-input: #0d1117; --dt-ring: #4a84fe; --dt-muted: #1a1e24;
+    --dt-primary-foreground: #161616; --dt-destructive: #f85149; --ui-success: #2fb38a;
+    --dt-font-sans: ui-sans-serif, system-ui, "Segoe UI", sans-serif; --dt-font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  html, body, #app { min-height: 100%; margin: 0; }
+  body { background: var(--ui-bg-editor); color: var(--ui-text-primary); font: 13px/1.4 var(--dt-font-sans); }
+  #app { width: 100%; min-width: 0; background: var(--ui-bg-editor); }
+  .flock-page { min-height: 100vh; width: 100%; background: var(--ui-bg-editor); }
+  .flock-devbar { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; padding: 9px 16px; border-bottom: 1px solid var(--ui-stroke-tertiary); background: var(--ui-bg-chrome); color: var(--ui-text-primary); }
+  .flock-devbar strong { font-size: 12px; font-weight: 650; margin-right: 3px; }
+  .flock-devbar button, .flock-devbar select { font: inherit; color: inherit; border: 1px solid var(--ui-stroke-secondary); border-radius: 6px; padding: 5px 9px; background: var(--ui-bg-tertiary); cursor: pointer; }
+  .flock-devbar button:hover, .flock-devbar select:hover { background: var(--ui-control-hover-background); }
+  .flock-devbar button:focus-visible, .flock-devbar select:focus-visible { outline: 2px solid var(--ui-accent); outline-offset: 2px; }
+  .flock-status { margin-left: auto; color: var(--ui-text-quaternary); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .flock-panel-host { width: 100%; min-width: 0; background: var(--ui-bg-editor); }
+  @media (max-width: 660px) { .flock-status { margin-left: 0; width: 100%; } }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.3.0",
+    "react/jsx-runtime": "https://esm.sh/react@19.3.0/jsx-runtime",
+    "react-dom/client": "https://esm.sh/react-dom@19.3.0/client?deps=react@19.3.0",
+    "@hermes/plugin-sdk": "/dev/preview/sdk-shim.js"
+  }
+}
+</script>
+</head>
+<body>
+<main id="app">
+  <div class="flock-page">
+    <div class="flock-devbar" role="toolbar" aria-label="Flock development controls">
+      <strong>Agent picks: Dusty Boom Bap</strong>
+      <label for="dev-template">Template</label>
+      <select id="dev-template" aria-label="Agent picks template"></select>
+      <button id="dev-pick" type="button">Agent picks</button>
+      <button id="dev-play" type="button" aria-pressed="false">Play</button>
+      <button id="dev-reset" type="button">Reset</button>
+      <span id="flock-status" class="flock-status" role="status" aria-live="polite">Preparing the flock…</span>
+    </div>
+    <div id="flock-panel" class="flock-panel-host"></div>
+  </div>
+</main>
+<script type="module">
+  // Load Hermes Desktop's compiled sheets exactly as the preview harness does.
+  const sheets = await fetch('/hermes/styles.json').then(r => r.json()).catch(() => [])
+  for (const name of sheets) {
+    const link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.href = '/hermes/assets/' + name
+    document.head.prepend(link)
+  }
+  if (!sheets.length) console.warn('[flock] Hermes Desktop styles not found; theme tokens use installed defaults')
+  new EventSource('/__reload').onmessage = () => location.reload()
+  try {
+    await import('./app.js')
+  } catch (error) {
+    const status = document.querySelector('#flock-status')
+    status.textContent = 'Flock failed to load: ' + (error?.message || error)
+    status.setAttribute('aria-live', 'assertive')
+    console.error(error)
+  }
+</script>
+</body>
+</html>
