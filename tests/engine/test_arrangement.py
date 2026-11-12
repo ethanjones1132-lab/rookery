@@ -383,7 +383,16 @@ def test_legacy_arrangement_wav_hash_matches_pre_change_baseline():
         flock_synth._VOICE_SAMPLE_CACHE.clear()
         flock_synth._VOICE_SAMPLE_CACHE.update(cached_voice_samples)
     actual = hashlib.sha256(wav_bytes(audio, SAMPLE_RATE, "PCM_24")).hexdigest()
-    assert actual == "5ea947d7fe7bc889c434478efef1d6a17ccf85e0d65cb9ae9cfe6dbe328f4028"
+    # Byte-exact output depends on the platform's float paths even with pinned
+    # libraries (CI: Windows matches the original baseline; Linux and macOS each
+    # render their own stable bytes). Each platform keeps its recorded baseline.
+    import sys
+    baselines = {
+        "win32": "5ea947d7fe7bc889c434478efef1d6a17ccf85e0d65cb9ae9cfe6dbe328f4028",
+    }
+    expected = baselines.get(sys.platform)
+    assert expected is not None, f"record the {sys.platform} baseline: {actual}"
+    assert actual == expected, f"{sys.platform} legacy arrangement render changed: {actual}"
 
 
 def test_arrangement_variety_counts_identical_iterations_and_reports_changes():
