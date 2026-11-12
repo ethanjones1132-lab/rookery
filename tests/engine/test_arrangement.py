@@ -389,6 +389,8 @@ def test_legacy_arrangement_wav_hash_matches_pre_change_baseline():
     import sys
     baselines = {
         "win32": "5ea947d7fe7bc889c434478efef1d6a17ccf85e0d65cb9ae9cfe6dbe328f4028",
+        "linux": "9aec9292700e8dcdd085ea33c9a0d675f7047e76bca2ad5b778c45db8c420be5",
+        "darwin": "7a7098771d16596b3fdc6cb5c917371da1236587e35a1e39e30f548dfefc0fbf",
     }
     expected = baselines.get(sys.platform)
     assert expected is not None, f"record the {sys.platform} baseline: {actual}"
