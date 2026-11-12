@@ -222,7 +222,7 @@ async def export(body: Any = Body(...)):
         result = await run_in_threadpool(
             from_engine, project, service.root, user_kit_dir=service.user_kit_dir,
             song=body.get("song"), stems=body.get("stems", True),
-            midi=body.get("midi", True), fps=fps,
+            midi=body.get("midi", True), fps=fps, corvus_vst3_path=service.corvus_vst3_path,
         )
         return result
     except Exception as exc:

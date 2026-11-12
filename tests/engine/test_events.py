@@ -68,3 +68,25 @@ def test_editing_state_survives_a_dead_publisher():
     with events.editing("beat"):
         assert events.is_editing("beat") is True
     assert events.is_editing("beat") is False
+
+
+
+def test_emit_without_a_gateway_in_process_never_imports_the_gateway(monkeypatch):
+    import builtins
+    import sys
+
+    from rookery import events
+
+    monkeypatch.setattr(events, "publisher", None)
+    monkeypatch.delitem(sys.modules, "tui_gateway.server", raising=False)
+    real_import = builtins.__import__
+    imported = []
+
+    def spy(name, *args, **kwargs):
+        if name.startswith(("hermes_cli.plugin_events", "tui_gateway")):
+            imported.append(name)
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", spy)
+    events.emit("project.updated", {"name": "beat", "rev": 1})
+    assert imported == []

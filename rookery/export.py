@@ -215,7 +215,7 @@ def _license(project: dict, user_kit_dir=None, *, stems: bool = False) -> str:
     return "\n".join(lines) + "\n"
 
 
-def export_project(project: dict, data_dir, *, user_kit_dir=None, name=None, song=None,
+def _export_project(project: dict, data_dir, *, user_kit_dir=None, name=None, song=None,
                    stems=True, midi=True, fps=None) -> dict:
     """Write a stable creator export and return a compact receipt."""
     project = validate_project(copy.deepcopy(project))
@@ -368,3 +368,11 @@ def export_project(project: dict, data_dir, *, user_kit_dir=None, name=None, son
     return {"folder": str(folder.resolve()), "files": [{"path": str(path.relative_to(folder)).replace("\\", "/"),
              "size": path.stat().st_size} for path in files], "duration_s": duration,
             "note": "Use cues.json: cut on bars for scene changes, kicks for hits."}
+
+
+def export_project(*args, corvus_vst3_path=None, **kwargs):
+    """Export with the user's corvus_vst3_path as the only loadable VST3 (none when unset)."""
+    from .fx import configured_vst3
+
+    with configured_vst3(corvus_vst3_path):
+        return _export_project(*args, **kwargs)

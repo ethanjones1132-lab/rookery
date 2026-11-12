@@ -210,7 +210,7 @@ The report has six checks. Each one has `pass` and `value`. Talk about a failure
 
 ## Corvus
 
-Call `rookery_kits` before you promise Corvus. If `corvus.found` is false, use the built-in limiter and say Corvus is not installed. Do not invent a path and do not download it.
+Call `rookery_kits` before you promise Corvus. Rookery loads only the VST3 the user set as `corvus_vst3_path` in its plugin settings: add `{"type":"vst3","params":{...}}` to a chain to switch it on, with parameter names from `corvus.params`. There is no path to pass. If `corvus.found` is false, use the built-in limiter and tell the user to set `corvus_vst3_path` (or that Corvus is not installed); never download it.
 
 ## Same beat, same bytes
 

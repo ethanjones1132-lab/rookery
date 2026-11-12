@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import contextvars
 import math
 import os
 import threading
 import time
+from contextlib import contextmanager
 from copy import deepcopy
 from pathlib import Path
 
@@ -22,7 +24,11 @@ _RANGES = {
     "highpass": {"cutoff_hz": (20, 20000)},
     "lowpass": {"cutoff_hz": (20, 20000)},
 }
-_CORVUS_DEFAULT = r"C:\Program Files\Common Files\VST3\DrippyFX.vst3\Contents\x86_64-win\DrippyFX.vst3"
+# The only VST3 Rookery will load: the user's configured corvus_vst3_path, set by the service around each
+# render or export. With nothing configured, no plugin is loaded and there is no hard-coded fallback.
+_CONFIGURED_VST3: contextvars.ContextVar[str | None] = contextvars.ContextVar("rookery_configured_vst3", default=None)
+_NOT_CONFIGURED = ("Corvus FX is not configured: set corvus_vst3_path in Rookery's plugin settings to use the vst3 "
+                   "effect. Rookery loads only that plugin and never downloads one.")
 _CORVUS_TTL = 15.0
 _corvus_cache = {}
 _corvus_cache_lock = threading.RLock()
@@ -97,12 +103,21 @@ def _plugin_path(path=None):
             if modules:
                 return modules[0]
         return None
-    default = Path(_CORVUS_DEFAULT)
-    if default.is_file():
-        return default
-    bundle = Path(r"C:\Program Files\Common Files\VST3\DrippyFX.vst3")
-    modules = sorted(bundle.glob("Contents/x86_64-win/*.vst3")) if bundle.is_dir() else []
-    return modules[0] if modules else None
+    return None
+
+
+@contextmanager
+def configured_vst3(path):
+    """Run renders with ``path`` (the user's corvus_vst3_path, or None) as the only loadable VST3."""
+    token = _CONFIGURED_VST3.set(str(path) if path else None)
+    try:
+        yield
+    finally:
+        _CONFIGURED_VST3.reset(token)
+
+
+def _same_file(a: Path, b: Path) -> bool:
+    return os.path.normcase(os.path.realpath(a)) == os.path.normcase(os.path.realpath(b))
 
 
 def corvus_status(path=None) -> dict:
@@ -119,15 +134,18 @@ def corvus_status(path=None) -> dict:
         cached = _corvus_cache.get(key)
         if cached and now - cached[0] < _CORVUS_TTL:
             return deepcopy(cached[1])
-        if selected is None:
-            result = {"found": False, "path": None, "params": [], "message": "Corvus VST3 module not found"}
+        if not path:
+            result = {"found": False, "configured": False, "path": None, "params": [], "message": _NOT_CONFIGURED}
+        elif selected is None:
+            result = {"found": False, "configured": True, "path": None, "params": [],
+                      "message": "the configured corvus_vst3_path is not a loadable .vst3 module"}
         else:
             try:
                 from pedalboard import load_plugin
                 plugin = load_plugin(os.fspath(selected))
-                result = {"found": True, "path": str(selected), "params": _plugin_param_info(plugin)}
+                result = {"found": True, "configured": True, "path": str(selected), "params": _plugin_param_info(plugin)}
             except Exception as exc:
-                result = {"found": False, "path": str(selected), "params": [], "message": str(exc)}
+                result = {"found": False, "configured": True, "path": str(selected), "params": [], "message": str(exc)}
         _corvus_cache.clear()
         _corvus_cache[key] = (now, result)
         return deepcopy(result)
@@ -184,17 +202,26 @@ def _make_plugin(effect):
 
 
 def _make_vst(effect):
+    """Load the user's configured VST3 only; an effect may name it, but never another plugin."""
     if set(effect) - {"type", "path", "params"}:
         raise ValueError("unknown vst3 settings")
-    path = effect.get("path")
     params = effect.get("params", {})
-    if not isinstance(path, str) or not path or not isinstance(params, dict):
-        raise ValueError("vst3 requires a path and object params")
-    if not path.lower().endswith(".vst3"):
+    if not isinstance(params, dict):
+        raise ValueError("vst3 params must be an object")
+    requested = effect.get("path")
+    if requested is not None and (not isinstance(requested, str) or not requested.lower().endswith(".vst3")):
         raise ValueError("vst3 path must name a .vst3 module or bundle")
-    candidate = _plugin_path(path)
+    configured = _CONFIGURED_VST3.get()
+    if not configured:
+        raise ValueError(_NOT_CONFIGURED)
+    candidate = _plugin_path(configured)
     if candidate is None:
-        raise FileNotFoundError(f"VST3 module not found: {path}")
+        raise FileNotFoundError(f"the configured corvus_vst3_path is not a loadable .vst3 module: {configured}")
+    if requested is not None:
+        named = _plugin_path(requested)
+        if named is None or not _same_file(named, candidate):
+            raise ValueError("vst3 path is not the configured corvus_vst3_path; Rookery loads only the VST3 the "
+                             "user configured in its plugin settings")
     from pedalboard import load_plugin
     plugin = load_plugin(os.fspath(candidate))
     parameters = _parameter_map(plugin)

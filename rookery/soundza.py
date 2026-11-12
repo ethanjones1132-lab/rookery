@@ -53,8 +53,15 @@ _KIND_FORM = {"loop": "LOOP", "one-shot": "ONE_SHOT", "oneshot": "ONE_SHOT", "hi
 
 
 def _api_key() -> str | None:
-    """Read ``SOUNDZA_API_KEY`` at call time. The value is never logged or echoed."""
-    value = os.environ.get("SOUNDZA_API_KEY")
+    """Read ``SOUNDZA_API_KEY`` at call time through Hermes's scoped secret lookup, so the active
+    profile's key is used. Outside Hermes (tests, standalone) it falls back to the process environment.
+    The value is never logged or echoed."""
+    try:
+        from agent.secret_scope import get_secret
+    except ImportError:
+        value = os.environ.get("SOUNDZA_API_KEY")
+    else:
+        value = get_secret("SOUNDZA_API_KEY")
     if not isinstance(value, str):
         return None
     value = value.strip()

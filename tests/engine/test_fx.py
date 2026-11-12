@@ -133,14 +133,15 @@ def test_make_vst_sets_boolean_controls_as_real_bools(monkeypatch, tmp_path):
     monkeypatch.setitem(sys.modules, "pedalboard", types.SimpleNamespace(load_plugin=lambda path: Plugin()))
     module = tmp_path / "plugin.vst3"
     module.touch()
-    from rookery.fx import _make_vst
+    from rookery.fx import _make_vst, configured_vst3
 
-    plugin = _make_vst({"type": "vst3", "path": str(module),
-                        "params": {"distortion_bypass": 1, "fatness": 10}})
-    assert plugin.distortion_bypass is True
-    assert plugin.fatness == 10.0
-    with pytest.raises(ValueError, match="0 or 1"):
-        _make_vst({"type": "vst3", "path": str(module), "params": {"distortion_bypass": 0.3}})
+    with configured_vst3(module):
+        plugin = _make_vst({"type": "vst3", "path": str(module),
+                            "params": {"distortion_bypass": 1, "fatness": 10}})
+        assert plugin.distortion_bypass is True
+        assert plugin.fatness == 10.0
+        with pytest.raises(ValueError, match="0 or 1"):
+            _make_vst({"type": "vst3", "path": str(module), "params": {"distortion_bypass": 0.3}})
 
 
 def test_limiter_threshold_and_ceiling_are_forwarded(monkeypatch):
@@ -215,3 +216,96 @@ def test_distinct_limiter_thresholds_produce_distinct_audio():
     mild = apply_fx(signal, [{"type": "limiter", "threshold_db": -3}], 44100)
     strong = apply_fx(signal, [{"type": "limiter", "threshold_db": -20}], 44100)
     assert not np.array_equal(mild, strong)
+
+
+
+def _fake_pedalboard(monkeypatch, calls):
+    import sys
+    import types
+
+    class Plugin:
+        parameters = {}
+
+    def load_plugin(path):
+        calls.append(path)
+        return Plugin()
+
+    monkeypatch.setitem(sys.modules, "pedalboard", types.SimpleNamespace(load_plugin=load_plugin))
+
+
+def test_vst3_is_never_loaded_without_a_configured_path(monkeypatch, tmp_path):
+    from rookery.fx import _make_vst
+
+    calls = []
+    _fake_pedalboard(monkeypatch, calls)
+    module = tmp_path / "plugin.vst3"
+    module.touch()
+    with pytest.raises(ValueError, match="not configured"):
+        _make_vst({"type": "vst3", "path": str(module), "params": {}})
+    with pytest.raises(ValueError, match="not configured"):
+        _make_vst({"type": "vst3", "params": {}})
+    assert calls == []
+
+
+def test_vst3_loads_only_the_configured_plugin(monkeypatch, tmp_path):
+    from rookery.fx import _make_vst, configured_vst3
+
+    calls = []
+    _fake_pedalboard(monkeypatch, calls)
+    configured = tmp_path / "Corvus.vst3"
+    configured.touch()
+    other = tmp_path / "Other.vst3"
+    other.touch()
+    with configured_vst3(configured):
+        _make_vst({"type": "vst3", "params": {}})
+        _make_vst({"type": "vst3", "path": str(configured), "params": {}})
+        with pytest.raises(ValueError, match="configured corvus_vst3_path"):
+            _make_vst({"type": "vst3", "path": str(other), "params": {}})
+    assert [str(path) for path in calls] == [str(configured), str(configured)]
+
+
+def test_corvus_status_has_no_hard_coded_fallback(monkeypatch):
+    import rookery.fx as fx
+
+    calls = []
+    _fake_pedalboard(monkeypatch, calls)
+    monkeypatch.setattr(fx.Path, "is_file", lambda self: True)
+    monkeypatch.setattr(fx.Path, "is_dir", lambda self: True)
+    fx._corvus_cache.clear()
+    status = fx.corvus_status(None)
+    assert status["found"] is False and status["configured"] is False and status["path"] is None
+    assert fx._plugin_path(None) is None
+    assert calls == []
+    assert not hasattr(fx, "_CORVUS_DEFAULT")
+
+
+def test_vst3_tool_schema_has_no_model_supplied_path():
+    import json
+    from pathlib import Path
+
+    from rookery.tools import SCHEMAS
+
+    text = json.dumps(SCHEMAS)
+    vst = [item for item in json.loads(text)["rookery_mix"]["parameters"]["properties"]["fx"]["items"]["oneOf"]
+           if item["properties"]["type"].get("const") == "vst3"]
+    assert vst and "path" not in vst[0]["properties"] and vst[0]["required"] == ["type"]
+    generated = json.loads((Path(__file__).resolve().parents[2] / "rookery" / "tool_schemas.json").read_text(encoding="utf-8"))
+    assert '"vst3"' in json.dumps(generated) and "Installed VST3 module path" not in json.dumps(generated)
+
+
+def test_soundza_key_is_read_through_the_hermes_secret_scope(monkeypatch):
+    import sys
+    import types
+
+    from rookery import soundza
+
+    seen = []
+    scope = types.ModuleType("agent.secret_scope")
+    scope.get_secret = lambda name, default=None: seen.append(name) or "profile-key"
+    package = types.ModuleType("agent")
+    package.secret_scope = scope
+    monkeypatch.setitem(sys.modules, "agent", package)
+    monkeypatch.setitem(sys.modules, "agent.secret_scope", scope)
+    monkeypatch.setenv("SOUNDZA_API_KEY", "process-env-key")
+    assert soundza._api_key() == "profile-key"
+    assert seen == ["SOUNDZA_API_KEY"]

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import functools
 import hashlib
 import importlib.metadata
 import json
@@ -42,6 +43,18 @@ def _derived_render_metadata(project: dict[str, Any]) -> dict[str, Any]:
     from .flock.synth import compile_events
 
     return compile_events(project)
+
+
+def _with_configured_vst3(method):
+    """Run a render, balance or export with the user's corvus_vst3_path as the only loadable VST3."""
+    @functools.wraps(method)
+    def wrapper(self, *args, **kwargs):
+        from . import fx
+
+        with fx.configured_vst3(self.corvus_vst3_path):
+            return method(self, *args, **kwargs)
+
+    return wrapper
 
 
 def set_settings_provider(provider: Callable[[], dict[str, Any]] | None) -> None:
@@ -228,6 +241,7 @@ class Service:
     def undo(self, name=None, steps=1, source="agent", tool="rookery_undo") -> dict[str, Any]:
         return self.store.undo(name, steps=steps, source=source, tool=tool)
 
+    @_with_configured_vst3
     def apply_ops(self, name, ops, rev=None, source="agent", tool="rookery_apply") -> dict[str, Any]:
         """Apply a batch of edits in one revision, expanding named grooves."""
         if not isinstance(ops, list) or not 1 <= len(ops) <= 64:
@@ -579,6 +593,7 @@ class Service:
         except (OSError, KeyError, ValueError, TypeError, sf.SoundFileRuntimeError):
             return None
 
+    @_with_configured_vst3
     def render(self, name=None, song=False) -> dict[str, Any]:
         selected_name = name if name is not None else self.latest_project_name()
         with self._lifecycle_lock(selected_name):

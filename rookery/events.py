@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import sys
 import threading
 from contextlib import contextmanager
 from typing import Any, Callable, Iterator
@@ -24,6 +25,11 @@ def emit(event: str, payload: dict[str, Any]) -> None:
     """Publish a Rookery event if Hermes is available; otherwise do nothing."""
     global _DETACHED_WARNED
     target = publisher
+    if target is None and "tui_gateway.server" not in sys.modules:
+        # No live gateway in this process (a CLI tool run, tests, a plugin-only host): nobody to deliver to.
+        # Importing the gateway here would pull in Hermes's process bootstrap, which can relaunch the process.
+        _LOGGER.debug("Rookery event %s not broadcast: no gateway in this process", event)
+        return
     try:
         if target is None:
             from hermes_cli.plugin_events import broadcast_plugin_event

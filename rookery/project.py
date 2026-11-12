@@ -191,14 +191,18 @@ def _validate_fx(fx: Any, label: str) -> list[dict[str, Any]]:
         if kind == "vst3":
             if set(effect) - {"type", "path", "params"}:
                 _fail(f"{where} has unknown vst3 settings")
-            path = effect.get("path")
-            if not isinstance(path, str) or not path or path.strip() != path or len(path) > 1024:
-                _fail(f"{where}.path must be an explicit non-empty path")
-            if any(ord(c) < 32 for c in path) or any(part == ".." for part in _path_parts(path)):
-                _fail(f"{where}.path must not contain traversal")
-            if not path.lower().endswith(".vst3"):
-                _fail(f"{where}.path must name a .vst3 module or bundle")
-            normalized: dict[str, Any] = {"type": kind, "path": path}
+            # The renderer loads only the user's configured corvus_vst3_path; a stored path (older projects,
+            # the page) is optional and must name that same plugin at render time.
+            normalized: dict[str, Any] = {"type": kind}
+            if "path" in effect:
+                path = effect["path"]
+                if not isinstance(path, str) or not path or path.strip() != path or len(path) > 1024:
+                    _fail(f"{where}.path must be an explicit non-empty path")
+                if any(ord(c) < 32 for c in path) or any(part == ".." for part in _path_parts(path)):
+                    _fail(f"{where}.path must not contain traversal")
+                if not path.lower().endswith(".vst3"):
+                    _fail(f"{where}.path must name a .vst3 module or bundle")
+                normalized["path"] = path
             if "params" in effect:
                 params = effect["params"]
                 if not isinstance(params, dict) or len(params) > 128:

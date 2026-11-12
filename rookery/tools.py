@@ -76,7 +76,8 @@ def export(data_dir, name=None, song=None, stems=True, midi=True, fps=None):
     project = service.store.read(name)
     from .export import export_project
     return export_project(project, data_dir, user_kit_dir=service.user_kit_dir,
-                          song=song, stems=stems, midi=midi, fps=fps)
+                          song=song, stems=stems, midi=midi, fps=fps,
+                          corvus_vst3_path=service.corvus_vst3_path)
 
 
 def state(data_dir, name, since=None):
@@ -156,11 +157,10 @@ _FX_SCHEMAS = [
         }, "required": ["type"], "additionalProperties": False,
     },
     {
-        "type": "object", "description": "Corvus VST3 effect and named parameters.", "properties": {
+        "type": "object", "description": "Corvus FX: the VST3 the user configured as corvus_vst3_path. Add it to switch it on and set its named parameters; Rookery loads only that plugin and never downloads one.", "properties": {
             "type": {"const": "vst3"},
-            "path": {"type": "string", "description": "Installed VST3 module path; Rookery never downloads plugins."},
-            "params": {"type": "object", "description": "Parameter names and numeric values exposed by the installed plugin.", "additionalProperties": {"type": "number"}},
-        }, "required": ["type", "path"], "additionalProperties": False,
+            "params": {"type": "object", "description": "Parameter names and numeric values exposed by the configured plugin (see rookery_kits).", "additionalProperties": {"type": "number"}},
+        }, "required": ["type"], "additionalProperties": False,
     },
 ]
 

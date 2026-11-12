@@ -412,26 +412,21 @@
               },
               {
                 "type": "object",
-                "description": "Corvus VST3 effect and named parameters.",
+                "description": "Corvus FX: the VST3 the user configured as corvus_vst3_path. Add it to switch it on and set its named parameters; Rookery loads only that plugin and never downloads one.",
                 "properties": {
                   "type": {
                     "const": "vst3"
                   },
-                  "path": {
-                    "type": "string",
-                    "description": "Installed VST3 module path; Rookery never downloads plugins."
-                  },
                   "params": {
                     "type": "object",
-                    "description": "Parameter names and numeric values exposed by the installed plugin.",
+                    "description": "Parameter names and numeric values exposed by the configured plugin (see rookery_kits).",
                     "additionalProperties": {
                       "type": "number"
                     }
                   }
                 },
                 "required": [
-                  "type",
-                  "path"
+                  "type"
                 ],
                 "additionalProperties": false
               }
@@ -846,26 +841,21 @@
               },
               {
                 "type": "object",
-                "description": "Corvus VST3 effect and named parameters.",
+                "description": "Corvus FX: the VST3 the user configured as corvus_vst3_path. Add it to switch it on and set its named parameters; Rookery loads only that plugin and never downloads one.",
                 "properties": {
                   "type": {
                     "const": "vst3"
                   },
-                  "path": {
-                    "type": "string",
-                    "description": "Installed VST3 module path; Rookery never downloads plugins."
-                  },
                   "params": {
                     "type": "object",
-                    "description": "Parameter names and numeric values exposed by the installed plugin.",
+                    "description": "Parameter names and numeric values exposed by the configured plugin (see rookery_kits).",
                     "additionalProperties": {
                       "type": "number"
                     }
                   }
                 },
                 "required": [
-                  "type",
-                  "path"
+                  "type"
                 ],
                 "additionalProperties": false
               }
@@ -1324,26 +1314,21 @@
                     },
                     {
                       "type": "object",
-                      "description": "Corvus VST3 effect and named parameters.",
+                      "description": "Corvus FX: the VST3 the user configured as corvus_vst3_path. Add it to switch it on and set its named parameters; Rookery loads only that plugin and never downloads one.",
                       "properties": {
                         "type": {
                           "const": "vst3"
                         },
-                        "path": {
-                          "type": "string",
-                          "description": "Installed VST3 module path; Rookery never downloads plugins."
-                        },
                         "params": {
                           "type": "object",
-                          "description": "Parameter names and numeric values exposed by the installed plugin.",
+                          "description": "Parameter names and numeric values exposed by the configured plugin (see rookery_kits).",
                           "additionalProperties": {
                             "type": "number"
                           }
                         }
                       },
                       "required": [
-                        "type",
-                        "path"
+                        "type"
                       ],
                       "additionalProperties": false
                     }
